@@ -121,3 +121,10 @@
 ::view-transition-new(diary-header){animation:none}
 :root[data-internal-navigation=true] .reveal-visible{animation-duration:.22s}
 @media(prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+
+/* 1.2.7：桌面辅助栏原生吸顶；超高内容可在栏内滚动，无脚本滚动监听。 */
+@media(min-width:701px){
+  .layout>.side{position:sticky;top:100px;align-self:start;min-height:0;max-height:calc(100svh - 116px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--muted) 30%,transparent) transparent}
+  .layout>.side>.panel{flex-shrink:0}
+  .layout>.side:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+}

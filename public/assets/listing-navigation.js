@@ -114,7 +114,19 @@
   }
   document.addEventListener('click',event=>{
     if(event.defaultPrevented || event.button!==0 || event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-    const a=event.target.closest('a[href]');if(!eligible(a))return;
+    const a=event.target.closest('a[href]');
+    if(a && !a.hasAttribute('download') && (!a.target || a.target==='_self')){
+      const anchorURL=new URL(a.href);
+      if(route(anchorURL) && anchorURL.hash==='#posts' && key(anchorURL)===key(new URL(renderedURL)) && !pending){
+        // Hash navigation must not enter the listing fetch/replace lifecycle.
+        event.preventDefault();save();
+        if(location.hash!=='#posts')history.pushState({diaryListing:true,diaryScroll:listTop()},'',anchorURL.href);
+        renderedURL=location.href;position(listTop(),true);
+        document.querySelector('.mobile-nav')?.removeAttribute('open');
+        return;
+      }
+    }
+    if(!eligible(a))return;
     const url=new URL(a.href);event.preventDefault();
     const top=!!a.closest('.brand');
     if(key(url)===key(new URL(renderedURL))&&!pending){position(top?0:listTop(),true);document.querySelector('.mobile-nav')?.removeAttribute('open');return}
@@ -122,6 +134,13 @@
   });
   window.addEventListener('popstate',event=>{
     const url=new URL(location.href);if(!route(url)){location.reload();return}
+    if(key(url)===key(new URL(renderedURL)) && !pending){
+      // Browsers also emit popstate for same-document hashes. Keep the existing list and native page lifecycle.
+      renderedURL=location.href;
+      if(url.hash==='#posts')position(listTop());
+      else if(!url.hash)position(event.state?.diaryScroll||0);
+      return;
+    }
     navigate(url,{pop:true,restore:event.state?.diaryScroll||0});
   });
   // Persist scroll after wheel input settles; replaceState on every animation frame competes with scrolling.
@@ -132,6 +151,7 @@
   });
   window.addEventListener('pageshow',event=>{if(event.persisted){document.querySelector('#posts')?.removeAttribute('aria-busy');syncLinks();position(history.state?.diaryScroll||0)}});
   syncLinks();
+  if(location.hash==='#posts')requestAnimationFrame(()=>position(listTop()));
   if(!location.hash && (history.state?.diaryListing || listing.dataset.listing==='category' || /^\/page\//.test(location.pathname))){
     const restore=history.state?.diaryListing?history.state.diaryScroll:null;position(restore??listTop());
   }
