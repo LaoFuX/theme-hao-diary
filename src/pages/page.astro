@@ -1,0 +1,6 @@
+---
+import {shell} from "../layouts/Shell";
+import {article} from "../components/Article";
+const html = shell(article(true), "${singlePage.spec.title + ' · ' + site.title}", "${singlePage.status.excerpt}");
+---
+<Fragment set:html={html} />

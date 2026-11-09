@@ -1,0 +1,4 @@
+templates/
+pnpm-lock.yaml
+pnpm-workspace.yaml
+ui-plugin/dist/

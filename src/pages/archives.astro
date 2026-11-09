@@ -1,0 +1,8 @@
+---
+import {shell} from '../layouts/Shell';
+import {sidebar} from '../components/Sidebar';
+import {pagination} from '../components/Pagination';
+const content = `<section><h1>文章归档</h1><div class="panel" th:each="archive : \${archives.items}"><h2 th:text="\${archive.year}"></h2><div th:each="month : \${archive.months}"><p th:each="post : \${month.posts}"><time class="meta" th:text="\${#dates.format(post.spec.publishTime,'MM-dd')}"></time><a th:href="\${post.status.permalink}" th:text="\${post.spec.title}"></a></p></div></div>${pagination('archives')}</section>`;
+const html = shell('<div class="wrap layout">'+sidebar+content+'</div>', "${'文章归档 · ' + site.title}");
+---
+<Fragment set:html={html} />

@@ -1,0 +1,18 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-hao-diary
+spec:
+  displayName: 子豪日记
+  author:
+    name: fuzihao
+  description: 基于 Halo Fuwari 2.2.0 构建链与模板接口定制的简约个人日记本主题。
+  logo: /themes/theme-hao-diary/assets/mark.svg
+  homepage: https://fuzihao.me
+  settingName: theme-hao-diary-setting
+  configMapName: theme-hao-diary-configmap
+  version: 1.2.5
+  requires: ">=2.27.2"
+  license:
+    - name: MIT
+      url: https://opensource.org/license/mit

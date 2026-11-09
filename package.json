@@ -1,0 +1,83 @@
+{
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "nodemon --config nodemon.json --exec 'astro build'",
+    "build": "astro build && pnpm package",
+    "build:pkg": "pnpm build",
+    "build:ui-plugin": "pnpm --dir ui-plugin build",
+    "build:only": "astro build",
+    "package": "theme-package",
+    "test:ui-plugin": "pnpm --dir ui-plugin test",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-astro"
+    ],
+    "overrides": [
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro"
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "@astrojs/compiler-rs": "^0.1.10",
+    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/svelte": "^8.1.2",
+    "@astrojs/vue": "^6.0.1",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource/roboto": "^5.2.10",
+    "@halo-dev/api-client": "^2.25.1",
+    "@swup/astro": "^1.8.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.6",
+    "astro-icon": "^1.1.5",
+    "ky": "^2.0.2",
+    "overlayscrollbars": "^2.16.0",
+    "photoswipe": "^5.4.4",
+    "sharp": "^0.34.5",
+    "stylus": "^0.64.0",
+    "svelte": "^5.56.3",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.38"
+  },
+  "devDependencies": {
+    "@halo-dev/theme-package-cli": "^1.1.1",
+    "@iconify-json/ant-design": "^1.2.5",
+    "@iconify-json/entypo-social": "^1.2.3",
+    "@iconify-json/fa6-brands": "^1.2.6",
+    "@iconify-json/fa6-regular": "^1.2.4",
+    "@iconify-json/fa6-solid": "^1.2.4",
+    "@iconify-json/ic": "^1.2.4",
+    "@iconify-json/material-symbols": "^1.2.77",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/mingcute": "^1.2.7",
+    "@iconify-json/ri": "^1.2.10",
+    "@iconify-json/simple-icons": "^1.2.86",
+    "@iconify-json/streamline-logos": "^1.2.0",
+    "@iconify-json/streamline-plump": "^1.2.0",
+    "@iconify-json/tabler": "^1.2.35",
+    "@iconify/tailwind4": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "nodemon": "^3.1.14",
+    "prettier": "3.8.1",
+    "prettier-plugin-astro": "0.14.1",
+    "unplugin-icons": "^23.0.1"
+  },
+  "lint-staged": {
+    "*.{astro,css,js,mjs,cjs,ts,vue,svelte,json,yaml,yml,md}": "prettier --write --ignore-unknown"
+  },
+  "packageManager": "pnpm@10.28.2"
+}

@@ -1,0 +1,8 @@
+---
+import { shell } from "../layouts/Shell";
+import {hero} from "../components/Hero";
+import {sidebar} from "../components/Sidebar";
+import {posts} from "../components/Posts";
+const html = shell(hero + '<div class="wrap layout" data-listing="category">'+sidebar+posts.replace('<h2>最新文章</h2>', '<h2 th:text="${category.spec.displayName}">分类文章</h2><a class="listing-all" href="/">全部文章</a>')+'</div>', "${category.spec.displayName + ' · ' + site.title}");
+---
+<Fragment set:html={html} />

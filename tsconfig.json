@@ -1,0 +1,10 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "templates", "_fuwari", "ui-plugin"],
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "types": ["unplugin-icons/types/vue"]
+  }
+}

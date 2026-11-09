@@ -1,0 +1,7 @@
+---
+import { shell } from "../layouts/Shell";
+import {sidebar} from "../components/Sidebar";
+import {posts} from "../components/Posts";
+const html = shell("<div class=\"wrap listing-title\"><h1 th:text=\"${tag.spec.displayName}\"></h1></div>"+'<div class="wrap layout">'+sidebar+posts+'</div>', "${tag.spec.displayName + ' · ' + site.title}");
+---
+<Fragment set:html={html} />

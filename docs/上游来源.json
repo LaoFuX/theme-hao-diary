@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/jiewenhuang/halo-theme-fuwari",
+  "tag": "v2.2.0",
+  "files_sha256": {
+    "theme.yaml": "961352f84ce0b7562e3ecef62896255e6c5bcb723624df76569dad077ab03d8f",
+    "package.json": "c80e3ccb485805bc2e2ed44c6671be38399d042e6e6efedc037602ffa420a21e",
+    "pnpm-lock.yaml": "b757c43614bc7ad9c0181aaff6ef9f79c4216b2753102c29c4dcd114638622f6",
+    "LICENSE": "3103a7a0992e277a65a199d7681d850fe194d6c5c4df0e7f9364cd0a21350665"
+  },
+  "note": "保留正式版锁文件；定制主题为独立ID与重写组件。"
+}

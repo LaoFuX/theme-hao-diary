@@ -1,0 +1,6 @@
+---
+import { shell } from "../layouts/Shell";
+
+const html = shell("<section class=\"wrap listing-title\"><h1>文章分类</h1><div class=\"taxonomy\"><a th:each=\"item : ${categoryFinder.listAll()}\" th:href=\"${item.status.permalink}\" th:text=\"${item.spec.displayName}\"></a></div></section>", "${'文章分类 · ' + site.title}");
+---
+<Fragment set:html={html} />

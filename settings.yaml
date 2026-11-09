@@ -1,0 +1,616 @@
+{
+  "apiVersion": "v1alpha1",
+  "kind": "Setting",
+  "metadata": {
+    "name": "theme-hao-diary-setting"
+  },
+  "spec": {
+    "forms": [
+      {
+        "group": "basic",
+        "label": "基础信息",
+        "formSchema": [
+          {
+            "$formkit": "menuRadio",
+            "name": "menu",
+            "label": "顶部导航菜单",
+            "value": "",
+            "help": "未选择时读取 Halo 主菜单；名称和链接在“外观 → 菜单”中维护。"
+          },
+          {
+            "$formkit": "text",
+            "name": "notice",
+            "label": "说明",
+            "value": "站点标题请在“系统 → 设置 → 基本设置”维护；文章与菜单读取 Halo 真实内容。",
+            "disabled": true
+          },
+          {
+            "$formkit": "switch",
+            "name": "switch_mode",
+            "label": "允许访客切换深浅色",
+            "value": true
+          }
+        ]
+      },
+      {
+        "group": "hero",
+        "label": "首页首屏",
+        "formSchema": [
+          {
+            "$formkit": "switch",
+            "name": "enabled",
+            "label": "显示首页首屏",
+            "value": true
+          },
+          {
+            "$formkit": "text",
+            "name": "eyebrow",
+            "label": "首屏眉题",
+            "value": "我的个人空间"
+          },
+          {
+            "$formkit": "text",
+            "name": "title",
+            "label": "首屏主标题",
+            "value": "你好，我是豪。"
+          },
+          {
+            "$formkit": "text",
+            "name": "subtitle",
+            "label": "首屏第二行",
+            "value": "记录折腾，也记录生活。"
+          },
+          {
+            "$formkit": "textarea",
+            "name": "description",
+            "label": "首屏说明",
+            "value": "把解决过的问题、做过的项目和生活里的片刻，慢慢整理在这里。"
+          },
+          {
+            "$formkit": "text",
+            "name": "button_text",
+            "label": "主按钮文字",
+            "value": "阅读文章"
+          },
+          {
+            "$formkit": "text",
+            "name": "button_url",
+            "label": "主按钮链接",
+            "value": "/#posts"
+          },
+          {
+            "$formkit": "text",
+            "name": "second_text",
+            "label": "第二按钮文字",
+            "value": "关于我"
+          },
+          {
+            "$formkit": "text",
+            "name": "second_url",
+            "label": "第二按钮链接",
+            "value": "/about-me"
+          },
+          {
+            "$formkit": "attachment",
+            "name": "image",
+            "label": "背景图片（所有设备）",
+            "value": "",
+            "help": "电脑、平板和手机共用；关闭多图轮换或列表为空时使用。"
+          },
+          {
+            "$formkit": "switch",
+            "name": "rotate_images",
+            "label": "每次访问顺序更换背景",
+            "value": false,
+            "help": "开启后按下方列表顺序，每次进入或刷新有首屏背景的页面切换一张；每位访客的浏览器分别记忆，浏览器恢复缓存页面时不切换。"
+          },
+          {
+            "$formkit": "array",
+            "name": "images",
+            "label": "轮换背景图片",
+            "value": [],
+            "help": "添加多张图片，可调整顺序；所有设备共用。浏览器禁止本地存储时显示第一张。",
+            "children": [
+              {
+                "$formkit": "attachment",
+                "name": "url",
+                "label": "背景图片",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "$formkit": "attachment",
+            "name": "fallback",
+            "label": "静态备用图片",
+            "value": "",
+            "help": "图片失败或系统减少动效时使用；未填则显示原创抽象背景。"
+          },
+          {
+            "$formkit": "number",
+            "name": "height",
+            "label": "首屏占屏比例（含顶栏，%）",
+            "value": 96,
+            "min": 75,
+            "max": 115,
+            "validation": "required|number|min:75|max:115"
+          },
+          {
+            "$formkit": "number",
+            "name": "mobile_min_height",
+            "label": "手机首屏最小高度（像素，不含顶栏）",
+            "value": 570,
+            "min": 400,
+            "max": 900,
+            "validation": "required|number|min:400|max:900",
+            "help": "手机文字较多时允许自然撑高，避免按钮被遮挡。"
+          },
+          {
+            "$formkit": "number",
+            "name": "title_size",
+            "label": "桌面标题上限（像素）",
+            "value": 64,
+            "min": 36,
+            "max": 90,
+            "validation": "required|number|min:36|max:90"
+          },
+          {
+            "$formkit": "number",
+            "name": "art_opacity",
+            "label": "背景图形／图片透明度（%）",
+            "value": 64,
+            "min": 0,
+            "max": 100,
+            "validation": "required|number|min:0|max:100"
+          },
+          {
+            "$formkit": "number",
+            "name": "overlay",
+            "label": "图片黑色遮罩（%）",
+            "value": 35,
+            "min": 0,
+            "max": 90,
+            "validation": "required|number|min:0|max:90"
+          },
+          {
+            "$formkit": "switch",
+            "name": "single_line",
+            "label": "首屏标题每行不折行",
+            "value": true,
+            "help": "桌面与手机按容器宽度适配字号，不截字；主标题与第二行仍是两个独立字段。"
+          },
+          {
+            "$formkit": "switch",
+            "name": "wave_enabled",
+            "label": "首屏底部波浪衔接",
+            "value": true
+          },
+          {
+            "$formkit": "switch",
+            "name": "wave_motion",
+            "label": "波浪缓慢流动",
+            "value": true,
+            "help": "系统减少动效时自动静止；不影响标题入场动画。"
+          },
+          {
+            "$formkit": "number",
+            "name": "wave_height",
+            "label": "波浪高度（像素）",
+            "value": 100,
+            "min": 40,
+            "max": 180,
+            "validation": "required|number|min:40|max:180"
+          },
+          {
+            "$formkit": "number",
+            "name": "wave_period",
+            "label": "波浪流动周期（秒）",
+            "value": 18,
+            "min": 8,
+            "max": 40,
+            "validation": "required|number|min:8|max:40"
+          }
+        ]
+      },
+      {
+        "group": "colors",
+        "label": "配色",
+        "formSchema": [
+          {
+            "$formkit": "text",
+            "name": "bg",
+            "label": "页面底色",
+            "value": "#090C10",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "填写六位十六进制色值，例如 #090C10；只修改深色模式。"
+          },
+          {
+            "$formkit": "text",
+            "name": "card",
+            "label": "卡片填充色",
+            "value": "#14191F",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "填写六位十六进制色值，例如 #090C10；只修改深色模式。"
+          },
+          {
+            "$formkit": "text",
+            "name": "hero",
+            "label": "首屏底色",
+            "value": "#0B1016",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "填写六位十六进制色值，例如 #090C10；只修改深色模式。"
+          },
+          {
+            "$formkit": "text",
+            "name": "accent",
+            "label": "强调色",
+            "value": "#A9BFD3",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "填写六位十六进制色值，例如 #090C10；只修改深色模式。"
+          },
+          {
+            "$formkit": "text",
+            "name": "ink",
+            "label": "正文颜色",
+            "value": "#E3E5E8",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "填写六位十六进制色值，例如 #090C10；只修改深色模式。"
+          },
+          {
+            "$formkit": "text",
+            "name": "muted",
+            "label": "辅助文字颜色",
+            "value": "#A4AAB3",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "填写六位十六进制色值，例如 #090C10；只修改深色模式。"
+          },
+          {
+            "$formkit": "text",
+            "name": "detail1",
+            "label": "细节色一 · 淡紫",
+            "value": "#ACAAFF",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "用于标题短竖条、徽章与控件细节，不改变页面底色；浅色模式使用对应深色值保证可读。"
+          },
+          {
+            "$formkit": "text",
+            "name": "detail2",
+            "label": "细节色二 · 青绿",
+            "value": "#8ED9C2",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "用于标题短竖条、徽章与控件细节，不改变页面底色；浅色模式使用对应深色值保证可读。"
+          },
+          {
+            "$formkit": "text",
+            "name": "detail3",
+            "label": "细节色三 · 暖杏",
+            "value": "#E4BC8B",
+            "validation": "required|matches:/^#[0-9A-Fa-f]{6}$/",
+            "help": "用于标题短竖条、徽章与控件细节，不改变页面底色；浅色模式使用对应深色值保证可读。"
+          }
+        ]
+      },
+      {
+        "group": "listing",
+        "label": "文章列表",
+        "formSchema": [
+          {
+            "$formkit": "number",
+            "name": "card_height",
+            "label": "桌面文章卡片最小高度（像素）",
+            "value": 290,
+            "min": 220,
+            "max": 420,
+            "validation": "required|number|min:220|max:420",
+            "help": "有自定义封面时显示图片；未设置封面时使用宽文字卡片，不生成占位图。手机高度按内容自然展开。"
+          },
+          {
+            "$formkit": "number",
+            "name": "cover_width",
+            "label": "桌面封面宽度比例（%）",
+            "value": 37,
+            "min": 30,
+            "max": 45,
+            "validation": "required|number|min:30|max:45"
+          },
+          {
+            "$formkit": "switch",
+            "name": "show_tags",
+            "label": "文章卡片显示标签",
+            "value": true,
+            "help": "标题下始终显示发布日期；有分类时显示分类。开启后，有标签的文章同时显示标签；不显示字数和阅读时长。"
+          }
+        ]
+      },
+      {
+        "group": "reading",
+        "label": "字体与阅读",
+        "formSchema": [
+          {
+            "$formkit": "number",
+            "name": "font_size",
+            "label": "正文字号（像素）",
+            "value": 18,
+            "min": 16,
+            "max": 22,
+            "validation": "required|number|min:16|max:22"
+          },
+          {
+            "$formkit": "number",
+            "name": "line_height",
+            "label": "正文行高",
+            "value": 1.9,
+            "min": 1.5,
+            "max": 2.2,
+            "validation": "required|number|min:1.5|max:2.2"
+          },
+          {
+            "$formkit": "switch",
+            "name": "toc",
+            "label": "显示文章目录",
+            "value": true,
+            "help": "桌面显示左侧悬停目录，手机显示可展开目录；从正文一级至所选级别标题生成，没有分节标题时隐藏。"
+          },
+          {
+            "$formkit": "number",
+            "name": "toc_depth",
+            "label": "目录最大标题级别",
+            "value": 3,
+            "min": 2,
+            "max": 4,
+            "validation": "required|number|min:2|max:4"
+          }
+        ]
+      },
+      {
+        "group": "motion",
+        "label": "动效",
+        "formSchema": [
+          {
+            "$formkit": "switch",
+            "name": "enabled",
+            "label": "首页入场动画",
+            "value": true,
+            "help": "每次打开或刷新首页播放一次，分层淡入与轻微上移；系统减少动效时关闭。"
+          },
+          {
+            "$formkit": "number",
+            "name": "duration",
+            "label": "动画时长（毫秒）",
+            "value": 750,
+            "min": 200,
+            "max": 1500,
+            "validation": "required|number|min:200|max:1500"
+          },
+          {
+            "$formkit": "switch",
+            "name": "loader_enabled",
+            "label": "首页加载动画",
+            "value": true,
+            "help": "首页完整打开或刷新时显示跳动方块与阴影；不遮挡文章页。系统减少动效时关闭。"
+          },
+          {
+            "$formkit": "number",
+            "name": "loader_duration",
+            "label": "加载动画最短展示（毫秒）",
+            "value": 650,
+            "min": 300,
+            "max": 1500,
+            "validation": "required|number|min:300|max:1500",
+            "help": "页面可用后自动退出，最多等候约1.8秒；不伪造加载百分比，也不等待第三方资源无限加载。"
+          }
+        ]
+      },
+      {
+        "group": "sidebar",
+        "label": "辅助栏",
+        "formSchema": [
+          {
+            "$formkit": "array",
+            "name": "widgets",
+            "label": "模块顺序",
+            "value": [
+              {
+                "type": "profile",
+                "enabled": true
+              },
+              {
+                "type": "categories",
+                "enabled": true
+              },
+              {
+                "type": "recommendations",
+                "enabled": true
+              },
+              {
+                "type": "runtime",
+                "enabled": true
+              }
+            ],
+            "help": "可增加、删除和调整顺序；空资料显示待填写占位，关闭模块后整块隐藏。",
+            "children": [
+              {
+                "$formkit": "select",
+                "name": "type",
+                "label": "模块类型",
+                "value": "profile",
+                "options": [
+                  {
+                    "label": "个人资料",
+                    "value": "profile"
+                  },
+                  {
+                    "label": "文章分类",
+                    "value": "categories"
+                  },
+                  {
+                    "label": "我的推荐",
+                    "value": "recommendations"
+                  },
+                  {
+                    "label": "站点运行时间",
+                    "value": "runtime"
+                  }
+                ]
+              },
+              {
+                "$formkit": "switch",
+                "name": "enabled",
+                "label": "显示这个模块",
+                "value": true
+              }
+            ]
+          },
+          {
+            "$formkit": "attachment",
+            "name": "avatar",
+            "label": "头像",
+            "value": ""
+          },
+          {
+            "$formkit": "text",
+            "name": "name",
+            "label": "个人昵称",
+            "value": ""
+          },
+          {
+            "$formkit": "textarea",
+            "name": "bio",
+            "label": "个人简介",
+            "value": ""
+          },
+          {
+            "$formkit": "text",
+            "name": "github",
+            "label": "GitHub 链接",
+            "value": "",
+            "help": "填写自己的公开页面链接；留空显示无跳转的待填写图标。"
+          },
+          {
+            "$formkit": "text",
+            "name": "bilibili",
+            "label": "Bilibili 链接",
+            "value": "",
+            "help": "填写自己的公开页面链接；留空显示无跳转的待填写图标。"
+          },
+          {
+            "$formkit": "text",
+            "name": "qq",
+            "label": "QQ 联系页链接",
+            "value": "",
+            "help": "填写自己的公开页面链接；留空显示无跳转的待填写图标。"
+          },
+          {
+            "$formkit": "array",
+            "name": "recommendations",
+            "label": "我的推荐",
+            "value": [],
+            "children": [
+              {
+                "$formkit": "text",
+                "name": "title",
+                "label": "标题",
+                "value": "",
+                "validation": "required"
+              },
+              {
+                "$formkit": "text",
+                "name": "url",
+                "label": "链接",
+                "value": "",
+                "validation": "required"
+              }
+            ]
+          },
+          {
+            "$formkit": "text",
+            "name": "start_date",
+            "label": "建站日期",
+            "value": "",
+            "help": "填写真实建站日期，格式 YYYY-MM-DD；留空不计算天数。当天显示0天，之后按自然日累计。",
+            "validation": [
+              [
+                "date_format",
+                "YYYY-MM-DD"
+              ]
+            ],
+            "placeholder": "例如：2026-11-06"
+          }
+        ]
+      },
+      {
+        "group": "footer",
+        "label": "页脚",
+        "formSchema": [
+          {
+            "$formkit": "textarea",
+            "name": "text",
+            "label": "页脚说明",
+            "value": "",
+            "help": "支持多行纯文本；留空隐藏说明。"
+          },
+          {
+            "$formkit": "switch",
+            "name": "show_copyright",
+            "label": "显示版权行",
+            "value": true
+          },
+          {
+            "$formkit": "textarea",
+            "name": "copyright",
+            "label": "版权行文案",
+            "value": "",
+            "help": "可完整编辑版权文字，支持换行；留空自动显示 © 当前年份和站点标题。"
+          },
+          {
+            "$formkit": "textarea",
+            "name": "credits_text",
+            "label": "页脚署名文案",
+            "value": "由 Halo 驱动 · 日记本主题，基于 Fuwari 2.2.0 定制（MIT）",
+            "help": "支持多行纯文本；可以自由编辑，清空后隐藏。许可证保留在主题包内。"
+          },
+          {
+            "$formkit": "array",
+            "name": "links",
+            "label": "页脚链接",
+            "value": [],
+            "children": [
+              {
+                "$formkit": "text",
+                "name": "title",
+                "label": "链接文字",
+                "value": "",
+                "validation": "required"
+              },
+              {
+                "$formkit": "text",
+                "name": "url",
+                "label": "链接地址",
+                "value": "",
+                "validation": "required"
+              }
+            ]
+          },
+          {
+            "$formkit": "text",
+            "name": "icp",
+            "label": "实际 ICP 备案号",
+            "value": ""
+          },
+          {
+            "$formkit": "text",
+            "name": "police",
+            "label": "实际公安备案文字",
+            "value": ""
+          },
+          {
+            "$formkit": "text",
+            "name": "police_url",
+            "label": "公安备案查询链接",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  }
+}

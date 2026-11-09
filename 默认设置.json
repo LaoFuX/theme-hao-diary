@@ -1,0 +1,98 @@
+{
+  "basic": {
+    "menu": "",
+    "notice": "站点标题请在“系统 → 设置 → 基本设置”维护；文章与菜单读取 Halo 真实内容。",
+    "switch_mode": true
+  },
+  "hero": {
+    "enabled": true,
+    "title": "你好，我是豪。",
+    "subtitle": "记录折腾，也记录生活。",
+    "description": "把解决过的问题、做过的项目和生活里的片刻，慢慢整理在这里。",
+    "button_text": "阅读文章",
+    "button_url": "/#posts",
+    "second_text": "关于我",
+    "second_url": "/about-me",
+    "image": "",
+    "fallback": "",
+    "height": 96,
+    "title_size": 64,
+    "art_opacity": 64,
+    "overlay": 35,
+    "mobile_min_height": 570,
+    "eyebrow": "我的个人空间",
+    "single_line": true,
+    "wave_enabled": true,
+    "wave_motion": true,
+    "wave_height": 100,
+    "wave_period": 18,
+    "rotate_images": false,
+    "images": []
+  },
+  "colors": {
+    "bg": "#090C10",
+    "card": "#14191F",
+    "hero": "#0B1016",
+    "accent": "#A9BFD3",
+    "ink": "#E3E5E8",
+    "muted": "#A4AAB3",
+    "detail1": "#ACAAFF",
+    "detail2": "#8ED9C2",
+    "detail3": "#E4BC8B"
+  },
+  "reading": {
+    "font_size": 18,
+    "line_height": 1.9,
+    "toc": true,
+    "toc_depth": 3
+  },
+  "motion": {
+    "enabled": true,
+    "duration": 750,
+    "loader_enabled": true,
+    "loader_duration": 650
+  },
+  "sidebar": {
+    "widgets": [
+      {
+        "type": "profile",
+        "enabled": true
+      },
+      {
+        "type": "categories",
+        "enabled": true
+      },
+      {
+        "type": "recommendations",
+        "enabled": true
+      },
+      {
+        "type": "runtime",
+        "enabled": true
+      }
+    ],
+    "avatar": "",
+    "name": "",
+    "bio": "",
+    "github": "",
+    "bilibili": "",
+    "qq": "",
+    "recommendations": [],
+    "start_date": ""
+  },
+  "footer": {
+    "text": "",
+    "copyright": "",
+    "links": [],
+    "icp": "",
+    "police": "",
+    "police_url": "",
+    "show_copyright": true,
+    "credits_text": "由 Halo 驱动 · 日记本主题，基于 Fuwari 2.2.0 定制（MIT）"
+  },
+  "listing": {
+    "card_height": 290,
+    "cover_width": 37,
+    "show_tags": true
+  }
+}

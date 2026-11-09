@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+npx --yes pnpm@10.28.2 exec lint-staged

@@ -1,0 +1,8 @@
+---
+import { shell } from "../layouts/Shell";
+import {hero} from "../components/Hero";
+import {sidebar} from "../components/Sidebar";
+import {posts} from "../components/Posts";
+const html = shell(hero + '<div class="wrap layout" data-listing="home">'+sidebar+posts+'</div>', '${site.title}', '${site.subtitle}', true);
+---
+<Fragment set:html={html} />

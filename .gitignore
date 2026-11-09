@@ -1,0 +1,28 @@
+# Dependencies and generated output
+node_modules/
+.pnpm-store/
+.astro/
+dist/
+templates/
+ui-plugin/dist/
+
+# Local release uploads: publish through GitHub Releases
+release-assets/
+
+# Credentials and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.local-test-auth.json
+
+# Logs and editor state
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+_fuwari
