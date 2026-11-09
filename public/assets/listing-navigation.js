@@ -25,7 +25,7 @@
     });
   };
   const position=(top,smooth=false)=>window.scrollTo({top,left:0,behavior:smooth&&motion()?'smooth':'instant'});
-  const listTop=()=>Math.max(0,document.querySelector('#posts').getBoundingClientRect().top+scrollY-100);
+  const listTop=()=>Math.max(0,document.querySelector('#posts').getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(document.querySelector('#posts')).scrollMarginTop)||100));
   const covers=posts=>posts.querySelectorAll('.post-visual img').forEach(img=>{
     const recover=()=>{const visual=img.closest('.post-visual');visual?.closest('.post-card-link')?.classList.add('post-no-cover');visual?.remove()};
     img.addEventListener('error',recover,{once:true});if(img.complete&&!img.naturalWidth)recover();

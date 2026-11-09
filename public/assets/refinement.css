@@ -124,7 +124,15 @@
 
 /* 1.2.7：桌面辅助栏原生吸顶；超高内容可在栏内滚动，无脚本滚动监听。 */
 @media(min-width:701px){
-  .layout>.side{position:sticky;top:100px;align-self:start;min-height:0;max-height:calc(100svh - 116px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--muted) 30%,transparent) transparent}
+  .layout>.side{position:sticky;top:var(--sidebar-top,100px);align-self:start;min-height:0;max-height:calc(100svh - var(--sidebar-top,100px) - 16px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--muted) 30%,transparent) transparent}
   .layout>.side>.panel{flex-shrink:0}
   .layout>.side:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 }
+
+/* 1.2.8：封面离开视口后导航上滑收起；不改变文档高度，不逐帧测量。 */
+:root[data-header-auto-hide=true] .site-header{transition:transform .24s cubic-bezier(.22,1,.36,1),opacity .24s ease}
+:root[data-header-collapsed=true]{--sidebar-top:24px}
+:root[data-header-collapsed=true] .site-header{transform:translateY(calc(-100% - 1px));opacity:0;pointer-events:none}
+:root[data-header-auto-hide=true] [data-listing] #posts{scroll-margin-top:24px}
+:root[data-header-motion=false] .site-header{transition:none}
+@media(prefers-reduced-motion:reduce){:root[data-header-auto-hide=true] .site-header{transition:none}}
