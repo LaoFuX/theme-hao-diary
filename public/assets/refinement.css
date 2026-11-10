@@ -136,3 +136,10 @@
 :root[data-header-auto-hide=true] [data-listing] #posts{scroll-margin-top:24px}
 :root[data-header-motion=false] .site-header{transition:none}
 @media(prefers-reduced-motion:reduce){:root[data-header-auto-hide=true] .site-header{transition:none}}
+
+/* 1.2.9: ChatGPT-style code cards, shared with Shiki shadow components. */
+:root{--diary-code-bg:#424242;--diary-code-border:#ffffff0d;--diary-code-ink:#ececec;--diary-code-hover:#ffffff14;--diary-code-scroll:#787878}
+:root[data-scheme=light]{--diary-code-bg:#f3f3f3;--diary-code-border:#0000000a;--diary-code-ink:#252525;--diary-code-hover:#0000000a;--diary-code-scroll:#aaa}
+.article-body shiki-code{display:block;min-width:0;max-width:100%;margin:24px 0}
+.article-body>pre,.article-body :not(shiki-code)>pre{background:var(--diary-code-bg);color:var(--diary-code-ink);border:1px solid var(--diary-code-border);border-radius:24px;padding:22px;line-height:1.8;tab-size:4;scrollbar-width:thin}
+@media(max-width:700px){.article-body>pre,.article-body :not(shiki-code)>pre{border-radius:18px;padding:18px 16px}}
