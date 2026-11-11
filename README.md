@@ -2,7 +2,7 @@
 
 面向个人日记、技术笔记与作品记录的 Halo 2.x 主题。采用深色卡片、宽幅首页首屏、文章目录和响应式布局，外观在 Halo 中文后台维护。
 
-**当前版本：1.2.9** · **Halo 要求：>= 2.27.2** · **许可证：MIT**
+**当前版本：1.3.0** · **Halo 要求：>= 2.27.2** · **许可证：MIT**
 
 演示站点：[fuzihao.me](https://fuzihao.me/)。截图展示演示站点的自定义配置；首次安装使用主题默认值，文章、头像、背景图与菜单需要自行配置。
 
@@ -46,7 +46,7 @@
 
 ![文章阅读与目录](docs/screenshots/article-desktop.jpg)
 
-1.2.9 代码框采用类似 ChatGPT 的圆角灰色卡片，语言标题和复制按钮始终可见，深浅色同步，隐藏行号。
+1.3.0 代码框采用类似 ChatGPT 的圆角灰色卡片，语言标题和复制按钮始终可见，深浅色同步，隐藏行号。
 
 ![深色代码卡片](docs/screenshots/code-card-dark-desktop.png)
 
@@ -67,7 +67,7 @@
 | --- | --- |
 | 显示名称 | 子豪日记 |
 | 主题 ID | `theme-hao-diary` |
-| 当前版本 | `1.2.9` |
+| 当前版本 | `1.3.0` |
 | Halo 版本声明 | `>=2.27.2`，已在 2.27.2 验证 |
 | Setting 名称 | `theme-hao-diary-setting` |
 | ConfigMap 名称 | `theme-hao-diary-configmap` |
@@ -90,8 +90,8 @@
 
 ## 安装与升级
 
-1. 打开本仓库 **Releases**，选择 `v1.2.9`。
-2. 下载附件 **`theme-hao-diary-1.2.9.zip`**。
+1. 打开本仓库 **Releases**，选择 `v1.3.0`。
+2. 下载附件 **`theme-hao-diary-1.3.0.zip`**。
 3. 登录 Halo 控制台，打开“外观 → 主题 → 主题管理 → 上传安装 / 升级”。
 4. 上传 ZIP；已有同 ID 主题时确认升级，首次安装后启用“子豪日记”。
 5. 配置菜单、首屏、资料卡和页脚，打开前台检查。
@@ -103,7 +103,7 @@ GitHub 自动生成的 **Source code (zip/tar.gz)** 是源码，不可直接作�
 ### 本次整理附带的现成安装包
 
 ```text
-release-assets/theme-hao-diary-1.2.9.zip
+release-assets/theme-hao-diary-1.3.0.zip
 release-assets/SHA256SUMS.txt
 ```
 
@@ -127,6 +127,10 @@ release-assets/SHA256SUMS.txt
 
 分类名称在“文章 → 分类”中维护；菜单名称和链接在“外观 → 菜单”中维护，两者不会自动互改。首页辅助栏过滤 slug 为 `default` 或名称为“默认分类”的项目，但保留后台分类和文章。详见 [分类与代码框操作指南](docs/分类与代码框操作指南.md)。
 
+副标题编辑：文章 → 编辑 → 设置 → 取消“自动生成摘要” → 填写“自定义摘要” → 保存。未填写时隐藏，不再截取正文。阅读量显示 Halo 原生访问次数，并非独立访客数。详见 [副标题与阅读量操作指南](docs/副标题与阅读量操作指南.md)。
+
+![副标题与阅读量](docs/screenshots/subtitle-views-desktop.png)
+
 详见 [安装与日常使用指南](docs/使用指南.md)。
 
 ## 开发与构建
@@ -143,7 +147,7 @@ npx --yes pnpm@10.28.2 run build
 
 ```text
 templates/                          # 生成的 Halo 模板和资源
-dist/theme-hao-diary-1.2.9.zip        # 可安装主题包
+dist/theme-hao-diary-1.3.0.zip        # 可安装主题包
 ```
 
 `templates/`、`dist/`、`node_modules/` 为本地生成内容，不提交。保留 `pnpm-lock.yaml`。不要手改 `templates/`；页面修改 `src/`，样式和交互修改 `public/assets/`。
@@ -187,8 +191,8 @@ pnpm-lock.yaml              固定依赖解析结果
 1. 创建空仓库 `theme-hao-diary`，不自动创建 README、许可证或 `.gitignore`。
 2. 在本目录运行 `git init`、`git branch -M main`、`git add .`，检查暂存清单。
 3. 提交源码，添加自己的远程地址并推送。
-4. 创建 Release，标签填 `v1.2.9`，目标选择本次版本提交。
-5. 上传主题 ZIP，粘贴 [1.2.9 发布说明](docs/RELEASE-v1.2.9.md)，然后发布。
+4. 创建 Release，标签填 `v1.3.0`，目标选择本次版本提交。
+5. 上传主题 ZIP，粘贴 [1.3.0 发布说明](docs/RELEASE-v1.3.0.md)，然后发布。
 
 新版本源码使用 `git add`、`git commit` 和 `git push` 提交；在 Releases 选择对应源码提交并创建版本标签，上传安装包。不要上传服务器配置、数据库、密钥和个人后台设置。
 
